@@ -43,16 +43,34 @@ def check_guess(random_combination, player_combination):
     
     return correct_position, correct_number
 
-if __name__ == "__main__":
+#Étape 5 : Boucle de Jeu Principale
 
+def play():
     random_combination = generate_random_combination()
-    
     print(random_combination)
 
-    player_combination = get_player_combination()
+    #player_combination = get_player_combination()
+    #print(player_combination)
 
-    print(player_combination)
+    #correct_position, correct_number = check_guess(random_combination, player_combination)
+    #print(correct_position, correct_number)
 
-    correct_position, correct_number = check_guess(random_combination, player_combination)
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        print(f"\nAttempt {attempt}/{MAX_ATTEMPTS}")
 
-    print(correct_position, correct_number)
+        player_combination = get_player_combination()
+        
+        correct_position, correct_number = check_guess(random_combination, player_combination)
+
+        
+        if correct_position == COMBINATION_LENGTH:
+            print(f"Youpiiiiiiiiii! You guessed the combination: {random_combination}")
+            break
+        else:
+            print(f"Correct positions: {'*' * correct_position}")
+            print(f"Correct numbers but wrong positions: {'-' * correct_number}")
+    else:
+        print(f"Oupsss!!! You've used all {MAX_ATTEMPTS} attempts. The secret combination was: {random_combination}")
+
+if __name__ == "__main__":
+    play()
