@@ -47,7 +47,7 @@ def check_guess(random_combination, player_combination):
 
 def play():
     random_combination = generate_random_combination()
-    print(random_combination)
+    ##print(random_combination)
 
     #player_combination = get_player_combination()
     #print(player_combination)
